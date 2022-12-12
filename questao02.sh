@@ -16,15 +16,16 @@ do
         RESULTADO=$(ping -c 2 google.com | egrep received | awk -F " " '{print $4}')
         # Usando if para checar: Caso o número de pacotes recebidos sejam 0, o computador não está devidamente conectado com a rede.
         if [ "$RESULTADO" = 0 ];then
-                echo "Sem internet"
-                # $(mpg123 musica.mp3)
+                echo "Sem internet :("
+                # $(mpg123 -q 'musica.mp3')
                 # Essa parte eu comentei pois eu uso o wsl no windows e não consegui baixar um arquivo mp3 pra executá-lo aqui
                 # No entanto, caso eu tivesse conseguido, a forma como o audio seria reproduzido seria com o comando acima.
         else
-                # Se não, então a internet provavelmente está funcionando normalmente.
-                echo "Internet está funcionando!"
+                # Se não (else), então a internet provavelmente está funcionando normalmente.
+                echo "Internet está funcionando! :)"
         fi
         # Esperando 30 segundos para a próxima verificação.
+        sleep 2
         echo -e "Esperando 30 segundos para verificar novamente... \n"
         sleep 30
 done
